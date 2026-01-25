@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Início",
+    "skills": "Skills",
+    "experience": "Experiência",
+    "projects": "Projetos",
+    "contact": "Contato",
+    "cta": "Vamos conversar",
+    "settings": "Configurações",
+    "theme": "Tema",
+    "language": "Idioma",
+    "dark": "Escuro",
+    "light": "Claro"
+  },
+  "about": {
+    "title": "Sobre mim",
+    "description": "Sou desenvolvedor FullStack com foco em Vue.js, TypeScript e arquitetura de sistemas modernos. Gosto de criar soluções escaláveis, bem estruturadas e com ótima experiência para o usuário.",
+    "paragraph1": "Sou desenvolvedor FullStack com foco em aplicações modernas, escaláveis e bem arquitetadas.",
+    "paragraph2": "Trabalho principalmente com Vue.js, TypeScript e backend em Node.js, criando soluções robustas e eficientes.",
+    "location": "Brasil",
+    "role": "Desenvolvedor FullStack",
+    "focus": "SaaS & Aplicações Web",
+    "experienceLabel": "Experiência",
+    "experienceValue": "+4 anos",
+    "stackLabel": "Stack principal",
+    "stackValue": "Vue • TypeScript • Node.js",
+    "availabilityLabel": "Disponível",
+    "availabilityValue": "Freelance / PJ"
+  },
+  "contact": {
+    "title": "Contato",
+    "subtitle": "Quer falar sobre um projeto, oportunidade ou só trocar uma ideia?",
+    "name": "Seu nome",
+    "email": "Seu e-mail",
+    "subject": "Assunto",
+    "message": "Sua mensagem",
+    "send": "Enviar mensagem",
+    "sending": "Enviando...",
+    "success": "✅ Mensagem enviada com sucesso!",
+    "error": "❌ Erro ao enviar mensagem. Tente novamente."
+  },
+  "experience": {
+    "title": "Experiência Profissional",
+    "jobs": {
+      "fullstack": {
+        "role": "Desenvolvedor Web FullStack",
+        "company": "Aliare",
+        "period": "2024 - Atual",
+        "desc1": "Desenvolvimento e manuntenção de sistema ERP",
+        "desc2": "Criação lógicas de negócio voltada para o ambiente erp.",
+        "desc3": "Participação de projetos grandes."
+      },
+      "web": {
+        "role": "Desenvolvedor Web FullStack",
+        "company": "Fundimisa",
+        "period": "2022 - 2024",
+        "desc1": "Manutenção e evolução de sistemas web.",
+        "desc2": "Desenvolvimento de aplicações web com Vue.js e TypeScript.",
+        "desc3": "Implementação de novas features e melhorias de performance.",
+        "desc4": "Integração com bancos de dados PostgreSQL."
+      }
+    }
+  },
+  "footer": {
+    "description": "Desenvolvedor FullStack focado em JavaScript, TypeScript e arquitetura de sistemas modernos e escaláveis.",
+    "navigation": {
+      "title": "Navegação",
+      "home": "Home",
+      "skills": "Skills",
+      "projects": "Projetos",
+      "contact": "Contato"
+    },
+    "social": {
+      "title": "Social"
+    },
+    "rights": "Todos os direitos reservados."
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Banco de Dados",
+    "infra": "Serviços & Infraestrutura"
+  },
+  "hero": {
+    "role": "Desenvolvedor FullStack",
+    "description": "Desenvolvedor FullStack focado em JavaScript, TypeScript e arquitetura de sistemas modernos, escaláveis e performáticos.",
+    "projects": "Ver Projetos",
+    "contact": "Contato"
+  },
+  "projects": {
+    "title": "Projetos",
+    "systemQueuing": {
+      "title": "Sistema de filas",
+      "description": "Sistema de filas e processamento assíncrono."
+    },
+    "systemLogin": {
+      "title": "Sistema de login",
+      "description": "Sistema de autenticação, permissões e módulos."
+    },
+    "worker": {
+      "title": "Worker de Arquivos",
+      "description": "Processamento assíncrono e sincronização de arquivos."
+    }
+  }
+}
