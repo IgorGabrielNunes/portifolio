@@ -1,108 +1,126 @@
 <script setup lang="ts">
-import { onMounted } from "vue"
-import { useI18n } from "vue-i18n"
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
+import Draggable from 'gsap/Draggable'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-type Skill = {
-  name: string
-  level: number
-}
+gsap.registerPlugin(Draggable)
 
-type SkillGroup = {
-  titleKey: string
-  skills: Skill[]
-}
+const track = ref<HTMLElement | null>(null)
 
-const skillGroups: SkillGroup[] = [
-  {
-    titleKey: "skills.frontend",
-    skills: [
-      { name: "Vue.js", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "JavaScript", level: 90 },
-      { name: "Tailwind CSS", level: 85 },
-      { name: "Quasar", level: 80 }
-    ]
-  },
-  {
-    titleKey: "skills.backend",
-    skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Fastify", level: 80 },
-      { name: "Apollo Server / GraphQL", level: 80 },
-      { name: "REST APIs", level: 85 }
-    ]
-  },
-  {
-    titleKey: "skills.database",
-    skills: [
-      { name: "PostgreSQL", level: 80 },
-      { name: "Redis", level: 70 },
-      { name: "Modelagem de Dados", level: 75 }
-    ]
-  },
-  {
-    titleKey: "skills.infra",
-    skills: [
-      { name: "Docker", level: 75 },
-      { name: "RabbitMQ", level: 80 },
-      { name: "CI/CD", level: 70 },
-      { name: "Vercel / VPS", level: 25 }
-    ]
-  }
+const skills = [
+  { name: 'Vue.js', icon: 'https://img.icons8.com/?size=100&id=rY6agKizO9eb&format=png&color=000000' },
+  { name: 'TypeScript', icon: 'https://img.icons8.com/?size=100&id=uJM6fQYqDaZK&format=png&color=000000' },
+  { name: 'JavaScript', icon: 'https://img.icons8.com/?size=100&id=108784&format=png&color=000000' },
+  { name: 'Node.js', icon: 'https://img.icons8.com/?size=100&id=54087&format=png&color=000000' },
+  { name: 'Docker', icon: 'https://img.icons8.com/?size=100&id=22813&format=png&color=000000' },
+  { name: 'PostgreSQL', icon: 'https://img.icons8.com/?size=100&id=38561&format=png&color=000000' },
+  { name: 'RabbitMQ', icon: '/src/public/imgs/rabbitmq.png' },
+  { name: 'Grapqhl', icon: '/src/public/imgs/grapqhl.png' },
+  { name: 'Apollo Server', icon: 'https://img.icons8.com/?size=100&id=ktSS1TBte4xa&format=png&color=000000' },
+  { name: 'Redis', icon: 'https://img.icons8.com/?size=100&id=pHS3eRpynIRQ&format=png&color=000000' },
+  { name: 'Git', icon: 'https://img.icons8.com/?size=100&id=20906&format=png&color=000000' },
+  { name: 'Go', icon: 'https://img.icons8.com/?size=100&id=IrYuykLoqOH6&format=png&color=000000' },
 ]
 
+const loopSkills = [...skills, ...skills]
+let tween: gsap.core.Tween
+
 onMounted(() => {
-  const bars = document.querySelectorAll<HTMLElement>("[data-skill]")
-  bars.forEach(bar => {
-    bar.style.width = bar.dataset.skill + "%"
+  if (!track.value) return
+
+  const totalWidth = track.value.scrollWidth / 3
+
+  tween = gsap.to(track.value, {
+    x: `-=${totalWidth}`,
+    duration: 30,
+    ease: 'none',
+    repeat: -1,
+    modifiers: {
+      x: (x) => {
+        const px = parseFloat(x)
+        return `${px % totalWidth}px`
+      },
+    },
+  })
+
+  Draggable.create(track.value, {
+    type: 'x',
+    inertia: true,
+
+    onDrag() {
+      gsap.set(track.value, { x: this.x })
+    },
+
+    onThrowUpdate() {
+      gsap.set(track.value, { x: this.x })
+    },
+
+    onDragEnd() {
+      tween.invalidate().restart()
+    },
   })
 })
+
 </script>
 
 <template>
-  <section id="skills" class="space-y-16">
-    <h2 class="text-4xl font-bold">
+  <section id="skills" class="space-y-10">
+     <h2 class="text-4xl font-bold">
       {{ t("skills.title") }}
     </h2>
+    <div class="overflow-hidden relative">
+      <div class="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-zinc-950 to-transparent z-10" />
+      <div class="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-zinc-950 to-transparent z-10" />
 
-    <div class="grid md:grid-cols-2 gap-12">
       <div
-        v-for="group in skillGroups"
-        :key="group.titleKey"
-        class="space-y-6"
+        ref="track"
+        class="flex gap-14 cursor-grab active:cursor-grabbing select-none"
       >
-        <h3 class="text-2xl font-semibold text-green-400">
-          {{ t(group.titleKey) }}
-        </h3>
-
-        <div class="space-y-5">
-          <div
-            v-for="skill in group.skills"
-            :key="skill.name"
-            class="space-y-2"
-            data-aos="fade-up"
-          >
-            <div class="flex justify-between text-sm text-zinc-700 dark:text-zinc-300">
-              <span>{{ skill.name }}</span>
-              <span class="text-zinc-500 dark:text-zinc-400">
-                {{ skill.level }}%
-              </span>
-            </div>
-
-            <div
-              class="w-full h-3 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden"
-            >
-              <div
-                class="h-full bg-green-400 transition-all duration-1000 ease-out"
-                :data-skill="skill.level"
-                style="width: 0%"
-              />
-            </div>
-          </div>
+        <div
+          v-for="(skill, index) in loopSkills"
+          :key="index"
+          class="flex flex-col items-center gap-3 min-w-[120px]"
+        >
+          <img
+            :src="skill.icon"
+            :alt="skill.name"
+            class="w-14 h-14 grayscale hover:grayscale-0 transition"
+          />
+          <span class="text-sm text-zinc-400">
+            {{ skill.name }}
+          </span>
         </div>
       </div>
     </div>
   </section>
+
 </template>
+
+<style scoped>
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .animate-marquee {
+    animation-duration: 40s;
+  }
+}
+
+</style>
