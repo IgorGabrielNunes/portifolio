@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 import emailjs from "@emailjs/browser";
 import { getEnvironmentVariable } from "../helpers";
+import SectionHeader from "./SectionHeader.vue";
 
 const { t } = useI18n();
 
@@ -50,15 +51,7 @@ const sendEmail = async () => {
     id="contact"
     class="space-y-12 max-w-3xl mx-auto px-6 py-24"
   >
-    <div class="space-y-4">
-      <h2 class="text-4xl font-bold">
-        {{ t("contact.title") }}
-      </h2>
-
-      <p class="text-zinc-600 dark:text-zinc-400">
-        {{ t("contact.subtitle") }}
-      </p>
-    </div>
+      <SectionHeader :title="t('contact.title')" :subtitle="t('contact.subtitle')" />
 
     <form
       class="grid gap-6

@@ -25,3 +25,15 @@ body {
   color: var(--text);
   transition: background-color 0.3s, color 0.3s;
 }
+
+.section-header {
+  @apply max-w-3xl mb-14 space-y-3;
+}
+
+.section-title {
+  @apply text-4xl font-bold tracking-tight;
+}
+
+.section-subtitle {
+  @apply text-zinc-400 text-base;
+}
