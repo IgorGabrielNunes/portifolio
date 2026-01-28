@@ -90,17 +90,11 @@
   },
   "projects": {
     "title": "Projetos",
-    "systemQueuing": {
-      "title": "Sistema de filas",
-      "description": "Sistema de filas e processamento assíncrono."
-    },
-    "systemLogin": {
-      "title": "Sistema de login",
-      "description": "Sistema de autenticação, permissões e módulos."
-    },
-    "worker": {
-      "title": "Worker de Arquivos",
-      "description": "Processamento assíncrono e sincronização de arquivos."
-    }
+    "subtitle": "Alguns projetos que desenvolvi e publiquei no GitHub",
+    "whitoutDescription": "Projeto sem descrição disponível",
+    "development": "Desenvolvimento",
+    "production": "Produção",
+    "showMoreInGitHub": "Ver no GitHub",
+    "loadingProjects": "Carregando projetos..."
   }
 }

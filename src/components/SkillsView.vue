@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue"
 import { useI18n } from "vue-i18n"
+import SectionHeader from "./SectionHeader.vue"
 
 const { t } = useI18n()
 
@@ -63,10 +64,7 @@ onMounted(() => {
 
 <template>
   <section id="skills" class="space-y-16">
-    <h2 class="text-4xl font-bold">
-      {{ t("skills.title") }}
-    </h2>
-
+    <SectionHeader :title="t('skills.title')" />
     <div class="grid md:grid-cols-2 gap-12">
       <div
         v-for="group in skillGroups"

@@ -90,17 +90,11 @@
   },
   "projects": {
     "title": "Projects",
-    "systemQueuing": {
-      "title": "Queue System",
-      "description": "Queue system and asynchronous processing."
-    },
-    "systemLogin": {
-      "title": "Login System",
-      "description": "Authentication, permissions, and modular access system."
-    },
-    "worker": {
-      "title": "File Worker",
-      "description": "Asynchronous processing and file synchronization."
-    }
+    "subtitle": "Some projects I developed and published on GitHub",
+    "whitoutDescription": "Project no description available",
+    "development": "Development",
+    "production": "Production",
+    "showMoreInGitHub": "View on GitHub",
+    "loadingProjects": "Loading projects..."
   }
 }

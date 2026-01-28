@@ -6,8 +6,13 @@ import { router } from './router'
 import { i18n } from './i18n/Index'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-AOS.init();
 
+AOS.init({
+  once: true,
+  offset: 80,
+  duration: 700,
+  easing: 'ease-out-cubic',
+})
 
 const savedTheme = localStorage.getItem('theme')
 if (savedTheme === 'dark') {
