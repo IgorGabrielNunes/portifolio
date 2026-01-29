@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import gsap from 'gsap'
+import { onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
+import SectionHeader from "./SectionHeader.vue"
+import gsap from "gsap"
 import Draggable from 'gsap/Draggable'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
@@ -67,14 +68,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="skills" class="space-y-10">
-     <h2 class="text-4xl font-bold">
-      {{ t("skills.title") }}
-    </h2>
-    <div class="overflow-hidden relative">
-      <div class="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-zinc-950 to-transparent z-10" />
-      <div class="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-zinc-950 to-transparent z-10" />
-
+  <section id="skills" class="space-y-16">
+    <SectionHeader :title="t('skills.title')" />
+    <div class="grid md:grid-cols-2 gap-12">
       <div
         ref="track"
         class="flex gap-14 cursor-grab active:cursor-grabbing select-none"

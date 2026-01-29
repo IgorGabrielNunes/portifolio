@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
+import SectionHeader from "./SectionHeader.vue";
 
 const { t } = useI18n();
 
@@ -39,11 +40,8 @@ const experiences = computed<Experience[]>(() => [
 <template>
   <section
     id="experience"
-    class="max-w-5xl mx-auto px-6 py-24 space-y-16"
   >
-    <h2 class="text-4xl font-bold">
-      {{ t("experience.title") }}
-    </h2>
+  <SectionHeader :title="t('experience.title')" />
 
     <div class="space-y-12">
       <div

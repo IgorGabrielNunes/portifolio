@@ -1,14 +1,11 @@
 <template>
   <section
     id="about"
-    class="max-w-5xl mx-auto px-6 py-24"
   >
     <div data-aos="fade-up" class="grid md:grid-cols-2 gap-16 items-center">
       
-      <div class="space-y-6">
-        <h2 class="text-3xl font-bold">
-          {{ $t('about.title') }}
-        </h2>
+      <div class="space-y-4">
+        <SectionHeader :title="$t('about.title')" />
 
         <p class="text-zinc-600 dark:text-zinc-400">
           {{ $t('about.paragraph1') }}
@@ -58,3 +55,7 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import SectionHeader from './SectionHeader.vue';
+</script>
