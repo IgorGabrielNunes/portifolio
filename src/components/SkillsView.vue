@@ -1,122 +1,116 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue"
-import { useI18n } from "vue-i18n"
-import SectionHeader from "./SectionHeader.vue"
-import gsap from "gsap"
-import Draggable from 'gsap/Draggable'
+import Autoplay from 'embla-carousel-autoplay'
+import EmblaCarousel from 'embla-carousel'
+import { onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import SectionHeader from './SectionHeader.vue'
+  import rabbitmqImg from '../public/imgs/rabbitmq.png'
 
 const { t } = useI18n()
 
-gsap.registerPlugin(Draggable)
+const emblaRef = ref<HTMLElement | null>(null)
 
-const track = ref<HTMLElement | null>(null)
+
+
+
 
 const skills = [
-  { name: 'Vue.js', icon: 'https://img.icons8.com/?size=100&id=rY6agKizO9eb&format=png&color=000000' },
-  { name: 'TypeScript', icon: 'https://img.icons8.com/?size=100&id=uJM6fQYqDaZK&format=png&color=000000' },
-  { name: 'JavaScript', icon: 'https://img.icons8.com/?size=100&id=108784&format=png&color=000000' },
-  { name: 'Node.js', icon: 'https://img.icons8.com/?size=100&id=54087&format=png&color=000000' },
-  { name: 'Docker', icon: 'https://img.icons8.com/?size=100&id=22813&format=png&color=000000' },
-  { name: 'PostgreSQL', icon: 'https://img.icons8.com/?size=100&id=38561&format=png&color=000000' },
-  { name: 'RabbitMQ', icon: '/src/public/imgs/rabbitmq.png' },
-  { name: 'Grapqhl', icon: '/src/public/imgs/grapqhl.png' },
-  { name: 'Apollo Server', icon: 'https://img.icons8.com/?size=100&id=ktSS1TBte4xa&format=png&color=000000' },
-  { name: 'Redis', icon: 'https://img.icons8.com/?size=100&id=pHS3eRpynIRQ&format=png&color=000000' },
-  { name: 'Git', icon: 'https://img.icons8.com/?size=100&id=20906&format=png&color=000000' },
-  { name: 'Go', icon: 'https://img.icons8.com/?size=100&id=IrYuykLoqOH6&format=png&color=000000' },
+  { name: 'Vue.js', icon: 'https://img.icons8.com/?id=rY6agKizO9eb&size=100' },
+  { name: 'TypeScript', icon: 'https://img.icons8.com/?id=uJM6fQYqDaZK&size=100' },
+  { name: 'JavaScript', icon: 'https://img.icons8.com/?id=108784&size=100' },
+  { name: 'Node.js', icon: 'https://img.icons8.com/?id=54087&size=100' },
+  { name: 'Docker', icon: 'https://img.icons8.com/?id=22813&size=100' },
+  { name: 'PostgreSQL', icon: 'https://img.icons8.com/?id=38561&size=100' },
+  { name: 'RabbitMQ', icon: rabbitmqImg },
+  { name: 'GraphQL', icon: 'https://img.icons8.com/?size=100&id=KRA1PoZgRrca&format=png&color=000000' },
+  { name: 'Redis', icon: 'https://img.icons8.com/?id=pHS3eRpynIRQ&size=100' },
+  { name: 'Git', icon: 'https://img.icons8.com/?id=20906&size=100' },
 ]
 
-const loopSkills = [...skills, ...skills]
-let tween: gsap.core.Tween
-
 onMounted(() => {
-  if (!track.value) return
+  if (!emblaRef.value) return
 
-  const totalWidth = track.value.scrollWidth / 3
-
-  tween = gsap.to(track.value, {
-    x: `-=${totalWidth}`,
-    duration: 30,
-    ease: 'none',
-    repeat: -1,
-    modifiers: {
-      x: (x) => {
-        const px = parseFloat(x)
-        return `${px % totalWidth}px`
-      },
+  EmblaCarousel(
+    emblaRef.value,
+    {
+      loop: true,
+      dragFree: true,
+      align: 'start',
     },
-  })
-
-  Draggable.create(track.value, {
-    type: 'x',
-    inertia: true,
-
-    onDrag() {
-      gsap.set(track.value, { x: this.x })
-    },
-
-    onThrowUpdate() {
-      gsap.set(track.value, { x: this.x })
-    },
-
-    onDragEnd() {
-      tween.invalidate().restart()
-    },
-  })
+    [
+      Autoplay({
+        delay: 1200,
+        stopOnInteraction: false,
+        stopOnMouseEnter: false,
+      }),
+    ]
+  )
 })
-
 </script>
 
 <template>
-  <section id="skills" class="space-y-16">
+  <section id="skills" class="space-y-14 overflow-hidden">
     <SectionHeader :title="t('skills.title')" />
-    <div class="grid md:grid-cols-2 gap-12">
-      <div
-        ref="track"
-        class="flex gap-14 cursor-grab active:cursor-grabbing select-none"
-      >
-        <div
-          v-for="(skill, index) in loopSkills"
-          :key="index"
-          class="flex flex-col items-center gap-3 min-w-[120px]"
-        >
-          <img
-            :src="skill.icon"
-            :alt="skill.name"
-            class="w-14 h-14 grayscale hover:grayscale-0 transition"
-          />
-          <span class="text-sm text-zinc-400">
-            {{ skill.name }}
-          </span>
+
+    <div class="embla">
+      <div class="embla__viewport" ref="emblaRef">
+        <div class="embla__container">
+          <div
+            v-for="(skill, index) in skills"
+            :key="index"
+            class="embla__slide"
+          >
+            <div class="skill-card">
+              <img :src="skill.icon" :alt="skill.name" />
+              <span>{{ skill.name }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
 </template>
 
 <style scoped>
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+.embla {
+  width: 100%;
 }
 
-.animate-marquee {
-  animation: marquee linear infinite;
+.embla__viewport {
+  overflow: hidden;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+.embla__container {
+  display: flex;
+  gap: 3rem;
 }
 
-@media (max-width: 768px) {
-  .animate-marquee {
-    animation-duration: 40s;
-  }
+.embla__slide {
+  flex: 0 0 auto;
 }
 
+.skill-card {
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skill-card img {
+  width: 56px;
+  height: 56px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.skill-card:hover img {
+  cursor: pointer;
+  filter: grayscale(0%);
+}
+
+.skill-card span {
+  font-size: 0.875rem;
+  color: rgb(161 161 170); /* zinc-400 */
+}
 </style>
