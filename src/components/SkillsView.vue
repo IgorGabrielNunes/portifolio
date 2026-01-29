@@ -1,102 +1,68 @@
 <script setup lang="ts">
-import { onMounted } from "vue"
-import { useI18n } from "vue-i18n"
-import SectionHeader from "./SectionHeader.vue"
+import Autoplay from 'embla-carousel-autoplay'
+import EmblaCarousel from 'embla-carousel'
+import { onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import SectionHeader from './SectionHeader.vue'
+  import rabbitmqImg from '../public/imgs/rabbitmq.png'
 
 const { t } = useI18n()
 
-type Skill = {
-  name: string
-  level: number
-}
+const emblaRef = ref<HTMLElement | null>(null)
 
-type SkillGroup = {
-  titleKey: string
-  skills: Skill[]
-}
 
-const skillGroups: SkillGroup[] = [
-  {
-    titleKey: "skills.frontend",
-    skills: [
-      { name: "Vue.js", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "JavaScript", level: 90 },
-      { name: "Tailwind CSS", level: 85 },
-      { name: "Quasar", level: 80 }
-    ]
-  },
-  {
-    titleKey: "skills.backend",
-    skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Fastify", level: 80 },
-      { name: "Apollo Server / GraphQL", level: 80 },
-      { name: "REST APIs", level: 85 }
-    ]
-  },
-  {
-    titleKey: "skills.database",
-    skills: [
-      { name: "PostgreSQL", level: 80 },
-      { name: "Redis", level: 70 },
-      { name: "Modelagem de Dados", level: 75 }
-    ]
-  },
-  {
-    titleKey: "skills.infra",
-    skills: [
-      { name: "Docker", level: 75 },
-      { name: "RabbitMQ", level: 80 },
-      { name: "CI/CD", level: 70 },
-      { name: "Vercel / VPS", level: 25 }
-    ]
-  }
+
+
+
+const skills = [
+  { name: 'Vue.js', icon: 'https://img.icons8.com/?id=rY6agKizO9eb&size=100' },
+  { name: 'TypeScript', icon: 'https://img.icons8.com/?id=uJM6fQYqDaZK&size=100' },
+  { name: 'JavaScript', icon: 'https://img.icons8.com/?id=108784&size=100' },
+  { name: 'Node.js', icon: 'https://img.icons8.com/?id=54087&size=100' },
+  { name: 'Docker', icon: 'https://img.icons8.com/?id=22813&size=100' },
+  { name: 'PostgreSQL', icon: 'https://img.icons8.com/?id=38561&size=100' },
+  { name: 'RabbitMQ', icon: rabbitmqImg },
+  { name: 'GraphQL', icon: 'https://img.icons8.com/?size=100&id=KRA1PoZgRrca&format=png&color=000000' },
+  { name: 'Redis', icon: 'https://img.icons8.com/?id=pHS3eRpynIRQ&size=100' },
+  { name: 'Git', icon: 'https://img.icons8.com/?id=20906&size=100' },
 ]
 
 onMounted(() => {
-  const bars = document.querySelectorAll<HTMLElement>("[data-skill]")
-  bars.forEach(bar => {
-    bar.style.width = bar.dataset.skill + "%"
-  })
+  if (!emblaRef.value) return
+
+  EmblaCarousel(
+    emblaRef.value,
+    {
+      loop: true,
+      dragFree: true,
+      align: 'start',
+    },
+    [
+      Autoplay({
+        delay: 1200,
+        stopOnInteraction: false,
+        stopOnMouseEnter: false,
+      }),
+    ]
+  )
 })
 </script>
 
 <template>
-  <section id="skills" class="space-y-16">
+  <section id="skills" class="space-y-14 overflow-hidden">
     <SectionHeader :title="t('skills.title')" />
-    <div class="grid md:grid-cols-2 gap-12">
-      <div
-        v-for="group in skillGroups"
-        :key="group.titleKey"
-        class="space-y-6"
-      >
-        <h3 class="text-2xl font-semibold text-green-400">
-          {{ t(group.titleKey) }}
-        </h3>
 
-        <div class="space-y-5">
+    <div class="embla">
+      <div class="embla__viewport" ref="emblaRef">
+        <div class="embla__container">
           <div
-            v-for="skill in group.skills"
-            :key="skill.name"
-            class="space-y-2"
-            data-aos="fade-up"
+            v-for="(skill, index) in skills"
+            :key="index"
+            class="embla__slide"
           >
-            <div class="flex justify-between text-sm text-zinc-700 dark:text-zinc-300">
+            <div class="skill-card">
+              <img :src="skill.icon" :alt="skill.name" />
               <span>{{ skill.name }}</span>
-              <span class="text-zinc-500 dark:text-zinc-400">
-                {{ skill.level }}%
-              </span>
-            </div>
-
-            <div
-              class="w-full h-3 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden"
-            >
-              <div
-                class="h-full bg-green-400 transition-all duration-1000 ease-out"
-                :data-skill="skill.level"
-                style="width: 0%"
-              />
             </div>
           </div>
         </div>
@@ -104,3 +70,47 @@ onMounted(() => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.embla {
+  width: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  gap: 3rem;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+}
+
+.skill-card {
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skill-card img {
+  width: 56px;
+  height: 56px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.skill-card:hover img {
+  cursor: pointer;
+  filter: grayscale(0%);
+}
+
+.skill-card span {
+  font-size: 0.875rem;
+  color: rgb(161 161 170); /* zinc-400 */
+}
+</style>

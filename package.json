@@ -19,7 +19,8 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "aos": "^2.3.4",
-    "gsap": "^3.12.5",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "vercel": "^50.9.1",
     "vue": "^3.4.0",
     "vue-i18n": "^11.2.8",
