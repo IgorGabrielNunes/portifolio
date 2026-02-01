@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Início",
-    "skills": "Skills",
+    "skills": "Habilidades",
     "experience": "Experiência",
     "projects": "Projetos",
     "contact": "Contato",
@@ -16,14 +16,14 @@
     "title": "Sobre mim",
     "description": "Sou desenvolvedor FullStack com foco em Vue.js, TypeScript e arquitetura de sistemas modernos. Gosto de criar soluções escaláveis, bem estruturadas e com ótima experiência para o usuário.",
     "paragraph1": "Sou desenvolvedor FullStack com foco em aplicações modernas, escaláveis e bem arquitetadas.",
-    "paragraph2": "Trabalho principalmente com Vue.js, TypeScript e backend em Node.js, criando soluções robustas e eficientes.",
+    "paragraph2": "Trabalho principalmente com Vue.js, TypeScript e backend em Graphql, criando soluções robustas e eficientes.",
     "location": "Brasil",
     "role": "Desenvolvedor FullStack",
     "focus": "SaaS & Aplicações Web",
     "experienceLabel": "Experiência",
     "experienceValue": "+4 anos",
     "stackLabel": "Stack principal",
-    "stackValue": "Vue • TypeScript • Node.js",
+    "stackValue": "Vue • TypeScript • Graphql",
     "availabilityLabel": "Disponível",
     "availabilityValue": "Freelance / PJ"
   },
@@ -76,7 +76,7 @@
     "rights": "Todos os direitos reservados."
   },
   "skills": {
-    "title": "Skills",
+    "title": "Habilidades",
     "frontend": "Frontend",
     "backend": "Backend",
     "database": "Banco de Dados",

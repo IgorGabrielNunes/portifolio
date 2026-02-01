@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "cta": "Hablemos",
+    "settings": "Configuración",
+    "theme": "Tema",
+    "language": "Idioma",
+    "dark": "Oscuro",
+    "light": "Claro"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy un desarrollador FullStack enfocado en Vue.js, TypeScript y arquitectura moderna de sistemas. Disfruto crear soluciones escalables, bien estructuradas y con una excelente experiencia de usuario.",
+    "paragraph1": "Soy un desarrollador FullStack enfocado en aplicaciones modernas, escalables y bien arquitecturadas.",
+    "paragraph2": "Trabajo principalmente con Vue.js, TypeScript y backend GraphQL, desarrollando soluciones robustas y eficientes.",
+    "location": "Brasil",
+    "role": "Desarrollador FullStack",
+    "focus": "SaaS y Aplicaciones Web",
+    "experienceLabel": "Experiencia",
+    "experienceValue": "4+ años",
+    "stackLabel": "Stack principal",
+    "stackValue": "Vue • TypeScript • GraphQL",
+    "availabilityLabel": "Disponible",
+    "availabilityValue": "Freelance / Contratista"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Quieres hablar sobre un proyecto, una oportunidad o simplemente charlar?",
+    "name": "Tu nombre",
+    "email": "Tu correo electrónico",
+    "subject": "Asunto",
+    "message": "Tu mensaje",
+    "send": "Enviar mensaje",
+    "sending": "Enviando...",
+    "success": "✅ ¡Mensaje enviado con éxito!",
+    "error": "❌ Error al enviar el mensaje. Por favor, inténtalo de nuevo."
+  },
+  "experience": {
+    "title": "Experiencia Profesional",
+    "jobs": {
+      "fullstack": {
+        "role": "Desarrollador Web Full Stack",
+        "company": "Aliare",
+        "period": "2024 - Presente",
+        "desc1": "Desarrollo y mantenimiento de sistemas ERP.",
+        "desc2": "Creación de lógica de negocio enfocada en el entorno ERP.",
+        "desc3": "Participación en proyectos de gran escala."
+      },
+      "web": {
+        "role": "Desarrollador Web Full Stack",
+        "company": "Fundimisa",
+        "period": "2022 - 2024",
+        "desc1": "Mantenimiento y evolución de sistemas web.",
+        "desc2": "Desarrollo de aplicaciones web utilizando Vue.js y TypeScript.",
+        "desc3": "Implementación de nuevas funcionalidades y mejoras de rendimiento.",
+        "desc4": "Integración con bases de datos PostgreSQL."
+      }
+    }
+  },
+  "footer": {
+    "description": "Desarrollador FullStack enfocado en JavaScript, TypeScript y arquitecturas modernas y escalables.",
+    "navigation": {
+      "title": "Navegación",
+      "home": "Inicio",
+      "skills": "Habilidades",
+      "projects": "Proyectos",
+      "contact": "Contacto"
+    },
+    "social": {
+      "title": "Social"
+    },
+    "rights": "Todos los derechos reservados."
+  },
+  "skills": {
+    "title": "Habilidades",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Bases de datos",
+    "infra": "Servicios e Infraestructura"
+  },
+  "hero": {
+    "role": "Desarrollador FullStack",
+    "description": "Desarrollador FullStack enfocado en JavaScript, TypeScript y arquitectura de sistemas moderna, escalable y de alto rendimiento.",
+    "projects": "Ver proyectos",
+    "contact": "Contacto"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Algunos proyectos que desarrollé y publiqué en GitHub",
+    "whitoutDescription": "Proyecto sin descripción disponible",
+    "development": "Desarrollo",
+    "production": "Producción",
+    "showMoreInGitHub": "Ver en GitHub",
+    "loadingProjects": "Cargando proyectos..."
+  }
+}
