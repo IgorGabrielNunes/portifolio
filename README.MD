@@ -15,7 +15,7 @@ Este projeto representa minha experiência como **Desenvolvedor FullStack**, apr
 ## ✨ Funcionalidades
 
 - 🌙 Modo **Dark / Light**
-- 🌎 **Internacionalização (i18n)** — PT-BR / EN
+- 🌎 **Internacionalização (i18n)** — PT-BR / EN / ES
 - ⚡ Build rápido com **Vite**
 - 📱 Layout **100% responsivo**
 - ✉️ Formulário de contato com **variáveis de ambiente**
@@ -35,28 +35,6 @@ Este projeto representa minha experiência como **Desenvolvedor FullStack**, apr
 - **ESLint + Prettier**
 
 ---
-
-## 📂 Estrutura do Projeto
-
-```bash
-src/
-├── assets/             # Imagens e recursos estáticos
-├── components/         # Componentes reutilizáveis
-│   ├── Navbar.vue
-│   ├── Footer.vue
-│   └── ThemeToggle.vue
-├── views/              # Páginas do site
-│   ├── Home.vue
-│   ├── About.vue
-│   ├── Experience.vue
-│   └── Contact.vue
-├── i18n/               # Internacionalização
-│   ├── en.json
-│   └── pt-BR.json
-├── router/             # Configuração de rotas
-├── styles/             # Estilos globais
-├── App.vue
-└── main.ts
 
 🚀 Como Rodar o Projeto
 1️⃣ Instalar dependências
