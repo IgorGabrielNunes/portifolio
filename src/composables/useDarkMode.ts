@@ -1,18 +1,19 @@
 import { ref, onMounted, watch } from 'vue'
 
-const isDark = ref(false)
+const isDark = ref(
+  document.documentElement.classList.contains('dark')
+)
 
 export function useDarkMode() {
   const applyTheme = () => {
-    const html = document.documentElement
-    html.classList.toggle('dark', isDark.value)
+    document.documentElement.classList.toggle('dark', isDark.value)
   }
 
   onMounted(() => {
     const saved = localStorage.getItem('theme')
-    isDark.value =
-      saved === 'dark' ||
-      (!saved && document.documentElement.classList.contains('dark'))
+
+    if (saved === 'dark') isDark.value = true
+    else if (saved === 'light') isDark.value = false
 
     applyTheme()
   })
